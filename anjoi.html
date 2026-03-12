@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CHAMAKURI MALLESWARA ANJANEYULU | Developer Portfolio</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #050505;
+            color: white;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .skill-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const { useState, useEffect } = React; const profile = { name: "CHAMAKURI MALLESWARA ANJANEYULU", phone: "+91 8125834669", email: "anjichamakuri05@gmail.com", linkedin: "#", github: "#", whatsapp: "https://wa.me/918125834669", tagline: "Building Digital
+        Experiences with Precision", bio: "I am a BCA student passionate about software development, databases and modern web technologies. I enjoy building efficient systems and exploring financial markets.", skills: [ { name: "C / C++", level: 95 },
+        { name: "Database (DBMS)", level: 92 }, { name: "Python", level: 88 }, { name: "Full Stack Web", level: 82 }, { name: "Stock Market Analysis", level: 65 } ], education: [ { degree: "Bachelor of Computer Applications", school: "Swarandhra College
+        of Engineering and Technology", period: "2024 - 2027", score: "7.69 CGPA" }, { degree: "Intermediate (Class XII)", school: "CSE Stream", period: "2022 - 2024", score: "60%" } ], projects: [ { title: "Academic Result Portal", desc: "Web platform
+        for student result management.", tags: ["React", "Firebase", "Tailwind"], link: "https://github.com/" }, { title: "Inventory Management System", desc: "C++ based system using file handling.", tags: ["C++", "DBMS"], link: "https://github.com/Jayadeeep"
+        } ] }; function App() { const [scrolled, setScrolled] = useState(false); useEffect(() => { const handleScroll = () => setScrolled(window.scrollY > 20); window.addEventListener("scroll", handleScroll); setTimeout(() => { if (window.lucide) window.lucide.createIcons();
+        }, 100); return () => window.removeEventListener("scroll", handleScroll); }, []); return (
+        <div>
+
+
+            {/* NAVBAR */}
+
+            <nav className={`fixed w-full z-50 transition ${scrolled ? "glass py-4": "py-6"}`}>
+
+                <div className="max-w-7xl mx-auto flex justify-between px-6">
+
+                    <h1 className="font-bold text-xl tracking-widest">
+                        {profile.name}
+                    </h1>
+
+                    <div className="hidden md:flex gap-8 text-gray-400">
+
+                        <a href="#projects" className="hover:text-white">Projects</a>
+                        <a href="#skills" className="hover:text-white">Skills</a>
+                        <a href="#education" className="hover:text-white">Education</a>
+
+                        <a href={`mailto:${profile.email}`} className="bg-white text-black px-4 py-2 rounded-full">
+Contact
+</a>
+
+                    </div>
+
+                </div>
+
+            </nav>
+
+
+
+            {/* HERO */}
+
+            <section className="min-h-screen flex items-center px-6">
+
+                <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12">
+
+                    <div>
+
+                        <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6">
+                            I'm <span className="gradient-text">{profile.name}</span>
+                        </h1>
+
+                        <p className="text-gray-400 mb-8 max-w-lg">
+                            {profile.bio}
+                        </p>
+
+                        <div className="flex gap-4">
+
+                            <a href="#projects" className="bg-blue-600 px-6 py-3 rounded-xl">
+View Projects
+</a>
+
+                            <a href={profile.whatsapp} className="glass px-6 py-3 rounded-xl">
+WhatsApp
+</a>
+
+                        </div>
+
+                    </div>
+
+
+
+                    {/* SKILLS */}
+
+                    <div id="skills" className="glass p-8 rounded-3xl">
+
+                        <h3 className="text-xl font-bold mb-6">
+                            Top Skills
+                        </h3>
+
+                        {profile.skills.map(skill=>(
+                        <div key={skill.name} className="mb-5">
+
+                            <div className="flex justify-between text-sm mb-1">
+                                <span>{skill.name}</span>
+                                <span>{skill.level}%</span>
+                            </div>
+
+                            <div className="skill-bar">
+                                <div className="skill-progress" style={{width:skill.level+ "%"}}>
+                                </div>
+                            </div>
+
+                        </div>
+                        ))}
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            {/* PROJECTS */}
+
+            <section id="projects" className="py-24 px-6">
+
+                <div className="max-w-7xl mx-auto">
+
+                    <h2 className="text-4xl font-bold mb-12">
+                        Projects
+                    </h2>
+
+                    <div className="grid md:grid-cols-2 gap-8">
+
+                        {profile.projects.map(p=>(
+
+                        <div key={p.title} className="glass p-8 rounded-2xl">
+
+                            <h3 className="text-xl font-bold mb-2">
+                                {p.title}
+                            </h3>
+
+                            <p className="text-gray-400 mb-4">
+                                {p.desc}
+                            </p>
+
+                            <div className="flex flex-wrap gap-2 mb-6">
+
+                                {p.tags.map(tag=>(
+                                <span key={tag} className="text-xs bg-white/5 px-2 py-1 rounded">
+{tag}
+</span> ))}
+
+                            </div>
+
+                            <a href={p.link} className="text-blue-400 flex items-center gap-2">
+
+View Source
+<i data-lucide="github"></i>
+
+</a>
+
+                        </div>
+
+                        ))}
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            {/* EDUCATION */}
+
+            <section id="education" className="py-24 px-6 border-t border-white/10">
+
+                <div className="max-w-5xl mx-auto">
+
+                    <h2 className="text-4xl font-bold mb-12 text-center">
+                        Education
+                    </h2>
+
+                    <div className="grid md:grid-cols-2 gap-8">
+
+                        {profile.education.map(e=>(
+
+                        <div key={e.degree} className="glass p-8 rounded-2xl">
+
+                            <h3 className="text-xl font-bold mb-2">
+                                {e.degree}
+                            </h3>
+
+                            <p className="text-gray-400">
+                                {e.school}
+                            </p>
+
+                            <p className="text-sm text-gray-500 mt-2">
+                                {e.period}
+                            </p>
+
+                            <p className="text-blue-400 mt-3">
+                                Score: {e.score}
+                            </p>
+
+                        </div>
+
+                        ))}
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            {/* FOOTER */}
+
+            <footer className="py-16 border-t border-white/10 text-center">
+
+                <p className="text-gray-500">
+                    © 2027 {profile.name}
+                </p>
+
+                <div className="flex justify-center gap-6 mt-6">
+
+                    <a href={profile.linkedin}>
+                        <i data-lucide="linkedin"></i>
+                    </a>
+
+                    <a href={profile.github}>
+                        <i data-lucide="github"></i>
+                    </a>
+
+                    <a href={`mailto:${profile.email}`}>
+                        <i data-lucide="mail"></i>
+                    </a>
+
+                </div>
+
+            </footer>
+
+
+        </div>
+
+        ) } ReactDOM .createRoot(document.getElementById("root")) .render(
+        <App/>);
+
+    </script>
+
+</body>
+
+</html>
